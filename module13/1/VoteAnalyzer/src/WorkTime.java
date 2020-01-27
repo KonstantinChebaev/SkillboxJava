@@ -8,18 +8,15 @@ public class WorkTime
 
 {
     private TreeSet<TimePeriod> periods;
-
     /**
      * Set of TimePeriod objects
      */
     public WorkTime()
     {
         periods = new TreeSet<>();
-    } //можно наверно не создавать коллекцию каждый раз а сделать ее статической
-    //нет потому что каждая коллекция это время работы отдельного участка
-    //или вместо коллекции сделать массив с двумя ячейками и класть туда милисекунды
+    }
 
-    public void addVisitTime(Date visit)
+    public void addVisitTime(long visit)
     {
         TimePeriod newPeriod = new TimePeriod(visit, visit);
         for(TimePeriod period : periods)

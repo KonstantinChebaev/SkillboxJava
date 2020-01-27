@@ -2,18 +2,10 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 
-
-/*
-можно сделать следующие потоки
-1 - делает тему со временем рабочим этих сраных пунктов
-2 - делает тему с повторяющимися пидорами
- */
-
-
 public class Loader {
 
     public static void main(String[] args) throws Exception {
-        String fileName = "res/data-18M.xml";
+        String fileName = "res/data-1M.xml";
         long t = System.currentTimeMillis();
         parseFile(fileName);
         System.out.println((System.currentTimeMillis()-t)+" ms");

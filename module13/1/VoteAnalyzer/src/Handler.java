@@ -11,7 +11,6 @@ import java.util.HashMap;
 public class Handler extends DefaultHandler {
     private static SimpleDateFormat visitDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
     private HashMap<Integer, WorkTime> voteStationWorkTimes = new HashMap<>();
-    //вместо отдельного класса worktime наверно можно стринги хреначить
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         if (qName.equals("voter")) {
@@ -23,9 +22,6 @@ public class Handler extends DefaultHandler {
                 e.printStackTrace();
             }
         } else if (qName.equals("visit")) {
-            /*
-для вот этого всего с визитами пожно сделать один класс
- */
             Integer station = Integer.parseInt(attributes.getValue("station"));
             Date time = null;
             try {
@@ -38,7 +34,7 @@ public class Handler extends DefaultHandler {
                 workTime = new WorkTime();
                 voteStationWorkTimes.put(station, workTime);
             }
-            workTime.addVisitTime(time);
+            workTime.addVisitTime(time.getTime());
         }
     }
 
