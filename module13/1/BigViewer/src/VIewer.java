@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
@@ -54,7 +55,12 @@ public class VIewer {
             for (int numOfLines = 0; numOfLines < 23; numOfLines++) {
                 for (int numOfSymbols = 0; numOfSymbols < 81; numOfSymbols++) {
                     if (raf.getFilePointer() == raf.length() - 1) break;
-                    nextChar = raf.readChar();
+                    try {
+                        nextChar = raf.readChar();
+                    }catch (EOFException e){
+                        e.printStackTrace();
+                        return ++totalAmount;
+                    }
                     if (nextChar == '\n') break;
                 }
             }

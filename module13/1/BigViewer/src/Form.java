@@ -37,9 +37,7 @@ public class Form {
                             scrollBar.setValue(newValue);
                         }
                     }
-
                 }
-
             }
         });
         scrollBar.addAdjustmentListener(new AdjustmentListener() {
