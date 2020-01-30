@@ -51,10 +51,12 @@ public class VIewer {
     private int getAmountOfPieces() throws IOException {
         int totalAmount = 1;
         char nextChar;
-        while (!(raf.getFilePointer() == raf.length() - 1)) {
+       stop: while (!(raf.getFilePointer() == raf.length() - 1)) {
             for (int numOfLines = 0; numOfLines < 23; numOfLines++) {
                 for (int numOfSymbols = 0; numOfSymbols < 81; numOfSymbols++) {
-                    if (raf.getFilePointer() == raf.length() - 1) break;
+                    long pointer = raf.getFilePointer();
+                    long length = raf.length();
+                    if (pointer >= length)  break stop;
                     try {
                         nextChar = raf.readChar();
                     }catch (EOFException e){
