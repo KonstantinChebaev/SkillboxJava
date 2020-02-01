@@ -11,13 +11,13 @@ public class Form {
     private JPanel textPanel;
     private JTextArea textArea;
     private JScrollBar scrollBar;
-    private VIewer viewer;
+    private Viewer viewer;
 
     public Form()  {
         textArea.setLineWrap(true);
         textArea.setFont(new Font("monospaced", Font.PLAIN, 12));
         try {
-            viewer = new VIewer("res\\text.txt", textArea);
+            viewer = new Viewer("res\\text.txt", textArea);
         } catch (IOException e) {
             e.printStackTrace();
         }

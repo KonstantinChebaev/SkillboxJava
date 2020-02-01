@@ -3,7 +3,7 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-public class VIewer {
+public class Viewer {
     private RandomAccessFile raf;
     private int SCALE;
     private int TOTALSCALE;
@@ -11,12 +11,12 @@ public class VIewer {
     private long actualPosition;
     private byte[] buffer;
 
-    public VIewer(String path, JTextArea textArea) throws IOException {
+    public Viewer(String path, JTextArea textArea) throws IOException {
         actualPosition = 0L;
         raf = new RandomAccessFile(path, "r");
         SCALE = getAmountOfPieces() * 5;
         TOTALSCALE = (int) raf.length() / (SCALE);
-        SCALE+=6;
+        SCALE += 6;
         this.textArea = textArea;
         buffer = new byte[3000];
         this.refresh(0);
@@ -31,7 +31,7 @@ public class VIewer {
         int end = -1;
         OUTERLOOP: for (int numOfLines = 0; numOfLines < 23; numOfLines++) {
             for (int numOfSymbols = 0; numOfSymbols < 81; numOfSymbols++) {
-                if(end == somTextChars.length-1){
+                if (end == somTextChars.length - 1) {
                     break OUTERLOOP;
                 }
                 end++;
@@ -40,8 +40,9 @@ public class VIewer {
                 }
             }
         }
-        someText = someText.substring(0,end);
+        someText = someText.substring(0, end);
         textArea.setText(someText);
+        buffer = new byte[3000];
     }
 
     public int getScale() {
@@ -51,15 +52,15 @@ public class VIewer {
     private int getAmountOfPieces() throws IOException {
         int totalAmount = 1;
         char nextChar;
-       stop: while (!(raf.getFilePointer() == raf.length() - 1)) {
+        stop: while (!(raf.getFilePointer() == raf.length() - 1)) {
             for (int numOfLines = 0; numOfLines < 23; numOfLines++) {
                 for (int numOfSymbols = 0; numOfSymbols < 81; numOfSymbols++) {
                     long pointer = raf.getFilePointer();
                     long length = raf.length();
-                    if (pointer >= length)  break stop;
+                    if (pointer >= length) break stop;
                     try {
                         nextChar = raf.readChar();
-                    }catch (EOFException e){
+                    } catch (EOFException e) {
                         e.printStackTrace();
                         return ++totalAmount;
                     }
