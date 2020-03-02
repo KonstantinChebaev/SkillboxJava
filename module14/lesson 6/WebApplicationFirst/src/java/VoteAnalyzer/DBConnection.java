@@ -28,7 +28,8 @@ public class DBConnection {
 //                        "`count` INT NOT NULL, " +
 //                        "PRIMARY KEY(id))");
             } catch (SQLException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
+               // e.printStackTrace();
             }
         }
         return connection;
@@ -44,7 +45,7 @@ public class DBConnection {
         } else {
             builder.append(",");
         }
-        builder.append("('" + name + "', '" + birthDay + "', 1)");
+        builder.append("(N'" + name + "', '" + birthDay + "', 1)");
     }
 
     public static void flushCounter () throws SQLException {
@@ -53,12 +54,13 @@ public class DBConnection {
         builder = new StringBuilder();
     }
 
-    public static void printVoterCounts() throws SQLException {
+    public static ResultSet printVoterCounts() throws SQLException {
         String sql = "SELECT name, birthDate, `count` FROM voter_count WHERE `count` > 1";
         ResultSet rs = DBConnection.getConnection().createStatement().executeQuery(sql);
-        while (rs.next()) {
-            System.out.println("\t" + rs.getString("name") + " (" +
-                    rs.getString("birthDate") + ") - " + rs.getInt("count"));
-        }
+        return rs;
+//        while (rs.next()) {
+//            System.out.println("\t" + rs.getString("name") + " (" +
+//                    rs.getString("birthDate") + ") - " + rs.getInt("count"));
+//        }
     }
 }

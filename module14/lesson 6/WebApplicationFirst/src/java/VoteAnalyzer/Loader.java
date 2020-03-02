@@ -18,8 +18,9 @@ public class Loader {
         SAXParser parser = factory.newSAXParser();
         Handler handler = new Handler();
         parser.parse(new File(fileName), handler);
-        return handler;
         //handler.printResults();
+        return handler;
+     
     }
 
 
