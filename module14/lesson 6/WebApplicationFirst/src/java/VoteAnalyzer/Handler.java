@@ -45,7 +45,7 @@ public class Handler extends DefaultHandler {
         try {
             DBConnection.flushCounter();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -59,7 +59,7 @@ public class Handler extends DefaultHandler {
         try {
             DBConnection.printVoterCounts();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
     public HashMap getWorkTimes (){
