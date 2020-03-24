@@ -31,7 +31,7 @@
         }
         %>
         </table>
-        <p>Voting station work times: </p>
+        <p>Voters</p>
         <table>
             <tr><td>Name</td><td>BirthDate</td><td>Count<td></tr>
         <%  

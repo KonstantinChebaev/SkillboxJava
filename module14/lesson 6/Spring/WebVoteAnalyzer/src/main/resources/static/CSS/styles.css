@@ -1,0 +1,11 @@
+table, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    background-color: rgba(225, 225, 225, 0.5);
+}
+body {
+    background: url(https://image.freepik.com/free-vector/_1159-2231.jpg);
+}
+h2 {
+    background-color: rgba(225, 225, 225, 0.5);
+}
