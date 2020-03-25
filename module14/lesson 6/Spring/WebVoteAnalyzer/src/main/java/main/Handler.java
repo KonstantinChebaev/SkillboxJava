@@ -15,8 +15,6 @@ public class Handler extends DefaultHandler {
     private static HashMap<Integer, WorkTime> voteStationWorkTimes = new HashMap<Integer, WorkTime>();
     private static ArrayList<WorkTime> times = new ArrayList<WorkTime>();
 
-
-
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         if (qName.equals("voter")) {
@@ -53,7 +51,7 @@ public class Handler extends DefaultHandler {
 //        }
 //    }
 
-    public static ArrayList<WorkTime> printResults() {
+    public static ArrayList<WorkTime> getWorkTimesList () {
         for (Integer votingStation : voteStationWorkTimes.keySet()) {
             WorkTime workTime = voteStationWorkTimes.get(votingStation);
             workTime.setData(votingStation);

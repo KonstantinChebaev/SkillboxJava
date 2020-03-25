@@ -5,6 +5,7 @@ table, td {
 }
 body {
     background: url(https://image.freepik.com/free-vector/_1159-2231.jpg);
+    backdrop-filter: blur(15px);
 }
 h2 {
     background-color: rgba(225, 225, 225, 0.5);

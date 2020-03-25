@@ -20,6 +20,14 @@ public class TimePeriod implements Comparable<TimePeriod>
         this.to = to;
     }
 
+    public long getFrom() {
+        return from;
+    }
+
+    public long getTo() {
+        return to;
+    }
+
     public void appendTime(long t)
     {
         SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy.MM.dd");
