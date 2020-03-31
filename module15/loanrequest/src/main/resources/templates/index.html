@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Возьми кредит</title>
+    <script src="/js/jquery-3.4.1.js"></script>
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="/CSS/styles.css"
+          media="all" data-th-href="@{/CSS/styles.css}"/>
+</head>
+<body>
+    <header>
+    <h2>ООО ИГОГО КБ "Понячка"</h2>
+    <h3>Лучший понячий банк Санкт-Петербурга</h3>
+    </header>
+    <h1>Здесь вы можете оставить заявку на кредит</h1>
+
+    <form>
+        <h3>Личные данные</h3>
+        <label for="gender">Пол:</label>
+        <select id="gender" name="gender">
+            <option value="F">Женский</option>
+            <option value="M">Мужской</option>
+        </select><br>
+        <label for="surname">Фамилия:</label>
+        <input type="text" size="40" id="surname" name="surname"><br>
+        <label for="name">Имя:</label>
+        <input type="text" size="40" id="name" name="name"><br>
+        <label for="lastname">Отчество:</label>
+        <input type="text" size="40" id="lastname" name="lastname"><br>
+        <label for="bDay">Дата рождения:</label>
+        <input type="date" size="40" id="bDay" name="bDay"><br>
+        <label for="income">Ежемесячный доход:</label>
+        <input type="number"  id="income" name="income"><br>
+        <label for="pony">Как вы относитесь к пони:</label>
+        <select id="pony" name="pony">
+            <option value="1">Не очень</option>
+            <option value="2">Нравятся</option>
+            <option value="3">Люблю их</option>
+            <option value="4">Я - Сумеречная Искорка</option>
+        </select><br>
+        <label for="email">Email:</label>
+        <input type="email" size="40" id="email" name="email"><br>
+        <label for="tel">Телефон для связи:</label>
+        <input type="tel" size="40" id="tel" name="tel"><br>
+
+
+        <h3>Паспортные данные</h3>
+        <label for="pasSer">Серия:</label>
+        <input id="pasSer" name="pasSer" maxlength="4" placeholder="XXXX" type="text"><br>
+        <label for="pasNum">Номер:</label>
+        <input id="pasNum" name="pasNum" maxlength="6" placeholder="XXXXXX" type="text"><br>
+        <label for="pasDay">Дата выдачи паспорта:</label>
+        <input type="date" size="40" id="pasDay" name="pasDay"><br>
+        <label for="pasKem">Кем выдан:</label>
+        <input type="text" size="40" id="pasKem" name="pasKem"><br>
+        <label for="pasKod">Код подразделения:</label>
+        <input type="text" size="40" id="pasKod" name="pasKod" placeholder="ХХХ-ХХХ"><br>
+
+<br>
+        <label for="agree">Настоящим выражаю ООО ИГОГО КБ "Понячка" согласие на обработку моих персональных данных.</label>
+        <input type="checkbox" value="1" id="agree" name="agree">
+        <br>
+        <input type="submit" value="ОТПРАВИТЬ">
+
+    </form>
+
+<footer>
+    <p>Кредит на потребительские нужды и на погашение действующих потребительских кредитов в сторонних банках.
+        Требования: гражданство Луны, постоянная регистрация на территории, стаж на последнем месте работы —
+        от 3 месяцев, возраст заемщика — от 6 до 99 лет (максимальный возраст на момент окончания кредитного
+        договора). При оформлении потребительского кредита с целью рефинансирования кредитов стороннего банка
+        минимальная ставка составляет от 0,02 % годовых в рублях в случае страхования заемщиком жизни и здоровья
+        одновременно с подписанием кредитного договора, минимальная ставка — от 0,01 % годовых в рублях в случае
+        отсутствия страхования жизни и смерти (расторжения договора страхования жизни и здоровья).  При оформлении кредита на потребительские нужды
+        минимальная ставка повышается на 3% от размера минимальной ставки потребительского кредита с целью
+        рефинансирования кредитов стороннего банка. Максимальная ставка повышается на 100 % от размера максимальной
+        ставки потребительского кредита с целью рефинансирования кредитов стороннего банка. Размер процентной ставки
+        , сумма кредита (от 35 000 до 2 000 000 рублей для потребительского кредита с целью рефинансирования,
+        от 50 000 до 3 000 000 рублей для потребительского кредита) и срок кредитования (от 1 дня до 10 000 лет)
+        устанавливаются для каждого клиента индивидуально, в зависимости от уровня риска клиента, категории
+        клиента и цели кредитования (рефинансирование или стандартный кредит наличными). Страхование жизни и
+        риска потери трудоспособности является добровольно-принудительным. Комиссии при получении кредита наличными как правило отсутствуют.
+        Смотря по настроению. Условия действительны до 31.03.2020. Подробная информация по телефону 8-800-755-35-35 и на
+        сайте locallhost:8080. Почти не является публичной офертой. Бессовестная реклама. ООО ИГОГО КБ "Понячка".
+        Генеральная лицензия Банка Луны № 666 от 31.03.2020</p>
+    <h3>© 2020-2020 БАНК ПОНЯЧКА. Генеральная лицензия Банка Луны №666 выдана 31.03.2020</h3>
+</footer>
+
+
+
+</body>
+</html>
