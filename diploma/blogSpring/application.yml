@@ -1,6 +1,0 @@
-spring:
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/blog_schema?useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password: mmm333
