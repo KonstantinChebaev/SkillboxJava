@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Заявка</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Это Ваши данные</h1>
+<p th:text="'id: ' + ${applicant.id}" />
+<p th:text="'Пол: ' + ${applicant.gender}" />
+<p th:text="'Фамилия: ' + ${applicant.surname}" />
+<p th:text="'Имя: ' + ${applicant.name}" />
+<p th:text="'Отчество: ' + ${applicant.lastName}" />
+<p th:text="'Дата рождения: ' + ${applicant.bDay}" />
+<p th:text="'Месячный доход: ' + ${applicant.income}" />
+<p th:text="'Отношение к пони: ' + ${applicant.attPony}" />
+<p th:text="'Email: ' + ${applicant.email}" />
+<p th:text="'Телефон: ' + ${applicant.tel}" />
+<h3>Паспортные данные</h3>
+<p th:text="'Серия : ' + ${applicant.pasSer}" />
+<p th:text="'Номер: ' + ${applicant.pasNum}" />
+<p th:text="'Дата выдачи: ' + ${applicant.pasDay}" />
+<p th:text="'Кем выдан: ' + ${applicant.pasKem}" />
+<p th:text="'Код подразделения: ' + ${applicant.pasKod}" />
+
+<a href="/">Подать еще одну заявку</a>
+</body>
+</html>

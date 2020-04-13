@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Возьми кредит</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="/js/jquery-3.4.1.js"></script>
     <script src="/js/main.js"></script>
     <link rel="stylesheet" type="text/css" href="/CSS/styles.css"
@@ -15,51 +15,78 @@
     </header>
     <h1>Здесь вы можете оставить заявку на кредит</h1>
 
-    <form>
+    <form method="POST" action="#" modelAttribute="applicant" th:action="@{/}" th:object="${applicant}">
         <h3>Личные данные</h3>
+        <input th:field="*{id}" type="hidden"/>
+
         <label for="gender">Пол:</label>
-        <select id="gender" name="gender">
-            <option value="F">Женский</option>
-            <option value="M">Мужской</option>
+        <select th:field="*{gender}" path="gender" id="gender" name="gender">
+            <option value="Ж">Женский</option>
+            <option value="М">Мужской</option>
         </select><br>
+
         <label for="surname">Фамилия:</label>
-        <input type="text" size="40" id="surname" name="surname"><br>
+        <input value="Фамилия" th:field="*{surname}" type="text" size="40" id="surname" name="surname" required="required" />
+        <p th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname error</p>
+        <br>
+
         <label for="name">Имя:</label>
-        <input type="text" size="40" id="name" name="name"><br>
+        <input value="Имя" th:field="*{name}"  type="text" size="40" id="name" name="name" required="required"  />
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</p>
+        <br>
+
         <label for="lastname">Отчество:</label>
-        <input type="text" size="40" id="lastname" name="lastname"><br>
+        <input value="Отчество" th:field="*{lastName}" type="text" size="40" id="lastname" name="lastname" /><br>
+
         <label for="bDay">Дата рождения:</label>
-        <input type="date" size="40" id="bDay" name="bDay"><br>
+        <input value="2020-03-31" th:field="*{bDay}" type="date" size="40" id="bDay" name="bDay" required="required" />
+        <p th:if="${#fields.hasErrors('bDay')}" th:errors="*{bDay}">BDay error</p><br>
+
         <label for="income">Ежемесячный доход:</label>
-        <input type="number"  id="income" name="income"><br>
-        <label for="pony">Как вы относитесь к пони:</label>
-        <select id="pony" name="pony">
-            <option value="1">Не очень</option>
-            <option value="2">Нравятся</option>
-            <option value="3">Люблю их</option>
-            <option value="4">Я - Сумеречная Искорка</option>
+        <input value="100" th:field="*{income}" type="number"  id="income" name="income" required="required" />
+        <p th:if="${#fields.hasErrors('income')}" th:errors="*{income}">Income error</p><br>
+
+        <label for="attPony">Как вы относитесь к пони:</label>
+        <select  th:field="*{attPony}" id="attPony" name="attPony">
+            <option value="Не очень">Не очень</option>
+            <option value="Нравятся">Нравятся</option>
+            <option value="Люблю их">Люблю их</option>
+            <option value="Я - Сумеречная Искорка">Я - Сумеречная Искорка</option>
         </select><br>
+
         <label for="email">Email:</label>
-        <input type="email" size="40" id="email" name="email"><br>
+        <input value="ponyachka@email.ru" th:field="*{email}" type="email" size="40" id="email" name="email" required="required"/>
+        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</p><br>
+
         <label for="tel">Телефон для связи:</label>
-        <input type="tel" size="40" id="tel" name="tel"><br>
+        <input value="88005553535"  th:field="*{tel}" type="tel" size="40" id="tel" name="tel" required="required" />
+        <p th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}">Tel error</p><br>
 
 
         <h3>Паспортные данные</h3>
         <label for="pasSer">Серия:</label>
-        <input id="pasSer" name="pasSer" maxlength="4" placeholder="XXXX" type="text"><br>
+        <input value="0000" th:field="*{pasSer}"  id="pasSer" name="pasSer" maxlength="4" placeholder="0000" type="text" required="required" />
+        <p th:if="${#fields.hasErrors('pasSer')}" th:errors="*{pasSer}">pasSer error</p><br>
+
         <label for="pasNum">Номер:</label>
-        <input id="pasNum" name="pasNum" maxlength="6" placeholder="XXXXXX" type="text"><br>
+        <input value="000000" th:field="*{pasNum}"   id="pasNum" name="pasNum" maxlength="6" placeholder="000000" type="text" required="required" />
+        <p th:if="${#fields.hasErrors('pasNum')}" th:errors="*{pasNum}">pasNum error</p><br>
+
         <label for="pasDay">Дата выдачи паспорта:</label>
-        <input type="date" size="40" id="pasDay" name="pasDay"><br>
+        <input value="2002-03-31" th:field="*{pasDay}"  type="date" size="40" id="pasDay" name="pasDay" required="required" />
+        <p th:if="${#fields.hasErrors('pasDay')}" th:errors="*{pasDay}">pasDay error</p><br>
+
         <label for="pasKem">Кем выдан:</label>
-        <input type="text" size="40" id="pasKem" name="pasKem"><br>
+        <input value="отделением №" th:field="*{pasKem}"  type="text" size="40" id="pasKem" name="pasKem" required="required" />
+        <p th:if="${#fields.hasErrors('pasKem')}" th:errors="*{pasKem}">pasKem error</p><br>
+
         <label for="pasKod">Код подразделения:</label>
-        <input type="text" size="40" id="pasKod" name="pasKod" placeholder="ХХХ-ХХХ"><br>
+        <input value="000-000" th:field="*{pasKod}"  type="text" size="40" id="pasKod" name="pasKod" placeholder="ХХХ-ХХХ" required="required" maxlength="7" />
+        <p th:if="${#fields.hasErrors('pasKod')}" th:errors="*{pasKod}">pasKod error</p><br>
 
 <br>
         <label for="agree">Настоящим выражаю ООО ИГОГО КБ "Понячка" согласие на обработку моих персональных данных.</label>
-        <input type="checkbox" value="1" id="agree" name="agree">
+        <input  type="checkbox" value="1" id="agree" name="agree" required="required"/>
         <br>
         <input type="submit" value="ОТПРАВИТЬ">
 
