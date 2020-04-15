@@ -3,26 +3,31 @@
 <head>
     <title>Заявка</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/CSS/styles.css"
+          media="all" data-th-href="@{/CSS/styles.css}"/>
 </head>
 <body>
-<h1>Это Ваши данные</h1>
-<p th:text="'id: ' + ${applicant.id}" />
-<p th:text="'Пол: ' + ${applicant.gender}" />
-<p th:text="'Фамилия: ' + ${applicant.surname}" />
-<p th:text="'Имя: ' + ${applicant.name}" />
-<p th:text="'Отчество: ' + ${applicant.lastName}" />
-<p th:text="'Дата рождения: ' + ${applicant.bDay}" />
-<p th:text="'Месячный доход: ' + ${applicant.income}" />
-<p th:text="'Отношение к пони: ' + ${applicant.attPony}" />
-<p th:text="'Email: ' + ${applicant.email}" />
-<p th:text="'Телефон: ' + ${applicant.tel}" />
-<h3>Паспортные данные</h3>
-<p th:text="'Серия : ' + ${applicant.pasSer}" />
-<p th:text="'Номер: ' + ${applicant.pasNum}" />
-<p th:text="'Дата выдачи: ' + ${applicant.pasDay}" />
-<p th:text="'Кем выдан: ' + ${applicant.pasKem}" />
-<p th:text="'Код подразделения: ' + ${applicant.pasKod}" />
-
-<a href="/">Подать еще одну заявку</a>
+<div id="results">
+    <h1>Это Ваши данные</h1>
+    <p th:text="'Ваш индивидуальный номер: ' + ${applicant.id}" />
+    <p th:text="'Пол: ' + ${applicant.gender}" />
+    <p th:text="'Фамилия: ' + ${applicant.surname}" />
+    <p th:text="'Имя: ' + ${applicant.name}" />
+    <p th:text="'Отчество: ' + ${applicant.lastName}" />
+    <p th:text="'Дата рождения: ' + ${applicant.bDay}" />
+    <p th:text="'Месячный доход: ' + ${applicant.income}+' рублей'" />
+    <p th:text="'Отношение к пони: ' + ${applicant.attPony}" />
+    <p th:text="'Email: ' + ${applicant.email}" />
+    <p th:text="'Телефон: ' + ${applicant.tel}" />
+    <h3>Паспортные данные</h3>
+    <p th:text="'Серия : ' + ${applicant.pasSer}" />
+    <p th:text="'Номер: ' + ${applicant.pasNum}" />
+    <p th:text="'Дата выдачи: ' + ${applicant.pasDay}" />
+    <p th:text="'Кем выдан: ' + ${applicant.pasKem}" />
+    <p th:text="'Код подразделения: ' + ${applicant.pasKod}" />
+    <p th:text="'Предварительный результат рассмотрения заявки: ' + ${itog}" />
+</div>
+<a href="/credit/" th:action="@{/credit/}" method="GET">Подать еще одну заявку</a> <br>
+<a href="/" >Главная страница</a>
 </body>
 </html>

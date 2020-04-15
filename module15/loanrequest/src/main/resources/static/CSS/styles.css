@@ -2,7 +2,7 @@ body {
     text-align: center;
     background: url("../bg.jpg");
 }
-form{
+form, #results {
     background: antiquewhite;
     width: 500px;
     margin-left: 30%;
