@@ -81,7 +81,7 @@
         <p th:if="${#fields.hasErrors('pasKem')}" th:errors="*{pasKem}">pasKem error</p><br>
 
         <label for="pasKod">Код подразделения:</label>
-        <input th:field="*{pasKod}"  type="text" size="40" id="pasKod" name="pasKod" placeholder="ХХХ-ХХХ" required="required" maxlength="7" />
+        <input th:field="*{pasKod}"  type="text" size="40" id="pasKod" name="pasKod" required="required" maxlength="7" />
         <p th:if="${#fields.hasErrors('pasKod')}" th:errors="*{pasKod}">pasKod error</p><br>
 
 <br>

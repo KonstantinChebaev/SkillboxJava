@@ -10,14 +10,14 @@ public class StorageProperties {
     /**
      * Folder location for storing files
      */
-    private String location = "upload-dir";
+    private final String LOCATION = "upload-dir";
 
     public String getLocation() {
-        return location;
+        return LOCATION;
     }
 
     public void setLocation(String location) {
-        this.location = location;
+        System.out.println("You can't change location");
     }
 
 
