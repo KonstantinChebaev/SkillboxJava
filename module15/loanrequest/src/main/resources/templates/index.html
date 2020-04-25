@@ -29,6 +29,25 @@
     </ul>
 </div>
 <a href="/credit/" th:action="@{/credit/}" method="GET">Подать заявку на кредит</a>
+<h3>Статистика посещений</h3>
+<table>
+    <tr>
+        <td>Браузер</td>
+        <td>Количество посещений</td>
+    </tr>
+    <tr>
+        <td>Opera</td>
+        <td><p th:text="${opera}" /></td>
+    </tr>
+    <tr>
+        <td>Firefox</td>
+        <td><p th:text="${firefox}" /></td>
+    </tr>
+    <tr>
+        <td>Chrome</td>
+        <td><p th:text="${chrome}" /></td>
+    </tr>
+</table>
 <footer>
     <h3>© 2020-2020 БАНК ПОНЯЧКА. Генеральная лицензия Банка Луны №666 выдана 31.03.2020</h3>
 </footer>

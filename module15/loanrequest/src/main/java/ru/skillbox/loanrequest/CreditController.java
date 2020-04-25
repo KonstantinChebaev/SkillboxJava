@@ -23,55 +23,40 @@ import java.net.URLEncoder;
 public class CreditController {
 
     @GetMapping("/credit/")
-    public String showForm(Model model, HttpServletRequest request, HttpSession session) throws IOException {
+    public String showForm(Model model, HttpSession session) {
         Applicant applicant = (Applicant) session.getAttribute("applicant");
-        if(applicant==null)applicant = this.buildApplicant();
-//        Cookie[] cookies = request.getCookies();
-//        if (cookies != null) {
-//            for (Cookie c : cookies){
-//                if (c.getName().equals("applicant")){
-//                    String value = URLDecoder.decode(c.getValue(), "UTF-8");
-//                    StringReader reader = new StringReader(value);
-//                    ObjectMapper mapper = new ObjectMapper();
-//                    applicant = mapper.readValue(reader, Applicant.class);
-//                }
-//            }
-//        }
+        if (applicant == null) {
+            applicant = this.buildApplicant();
+        }
         model.addAttribute("applicant", applicant);
         return "credit";
     }
+
+
     @PostMapping("/credit/")
-    public String submit(@ModelAttribute Applicant applicant, Model model, HttpServletResponse response, HttpSession session) throws IOException {
-//        StringWriter writer = new StringWriter();
-//        ObjectMapper mapper = new ObjectMapper();
-//        mapper.writeValue(writer, applicant);
-//        String appString = writer.toString();
-//        Cookie cookie = new Cookie("applicant", URLEncoder.encode(appString, "UTF-8"));
-//        response.addCookie(cookie);
+    public String submit(@ModelAttribute Applicant applicant, Model model, HttpSession session) {
         session.setAttribute("applicant", applicant);
         String itog = applicant.trullyGetCheck();
         model.addAttribute("itog", itog);
         return "result";
     }
 
-    private Applicant buildApplicant (){
-        Applicant applicant = new Applicant();
-        applicant.setAttPony("Не очень");
-        applicant.setBDay("2000-10-10");
-        applicant.setEmail("example@mail.com");
-        applicant.setGender("Ж");
-        applicant.setIncome(1);
-        applicant.setLastName("Фамилия");
-        applicant.setName("Имя");
-        applicant.setPasDay("2000-10-10");
-        applicant.setPasKem("Отделением №");
-        applicant.setPasKod("111-111");
-        applicant.setPasNum("000000");
-        applicant.setPasSer("0000");
-        applicant.setSurname("Отчество");
-        applicant.setTel("88005553535");
-        return applicant;
-
+    private Applicant buildApplicant() {
+        return Applicant.builder()
+                .attPony("Не очень")
+                .bDay("2000-10-10")
+                .email("example@mail.com")
+                .gender("Ж")
+                .income(1)
+                .lastName("Фамилия")
+                .name("Имя")
+                .pasDay("2000-10-10")
+                .pasKem("Отделением №")
+                .pasKod("111-111")
+                .pasNum("000000")
+                .pasSer("0000")
+                .surname("Отчество")
+                .tel("88005553535")
+                .build();
     }
-
 }

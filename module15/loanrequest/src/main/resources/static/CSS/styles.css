@@ -11,3 +11,7 @@ form, #results {
 form label {
     display: block;
 }
+table, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
