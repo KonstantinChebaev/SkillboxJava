@@ -21,20 +21,33 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ru.skillbox.loanrequest.storage.StorageException;
 import ru.skillbox.loanrequest.storage.StorageService;
+import ru.skillbox.loanrequest.visits.BVRepository;
+import ru.skillbox.loanrequest.visits.BrowserVisits;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class FileUploadController {
     private final StorageService storageService;
     @Autowired
+    private BVRepository bvRepository;
+    @Autowired
     public FileUploadController(StorageService storageService) {
         this.storageService = storageService;
     }
     @GetMapping("/")
-    public String listUploadedFiles(Model model) throws IOException {
+    public String listUploadedFiles(Model model, HttpServletRequest request) throws IOException {
         model.addAttribute("files", storageService.loadAll().map(
                 path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
                         "serveFile", path.getFileName().toString()).build().toUri().toString())
                 .collect(Collectors.toList()));
+
+        if(!bvRepository.existsById(1)){
+            bvRepository.save(new BrowserVisits(1,"opera",0));
+            bvRepository.save(new BrowserVisits(2,"chrome",0));
+            bvRepository.save(new BrowserVisits(3,"firefox",0));
+        }
+        this.makeVisit(request, model);
         return "index";
     }
 
@@ -62,6 +75,37 @@ public class FileUploadController {
         return ResponseEntity.notFound().build();
     }
 
+    private void makeVisit (HttpServletRequest request, Model model){
+        String agent = request.getHeader("user-agent");
+        BrowserVisits bv;
+        if(agent.contains("OPR")){
+            bv = bvRepository.findById(1).get();
+        } else if (agent.contains("Firefox")){
+            bv = bvRepository.findById(3).get();
+        } else {
+            bv = bvRepository.findById(2).get();
+        }
+        bv.setVisits(bv.getVisits()+1);
+        bvRepository.save(bv);
+        Iterable<BrowserVisits> allvisits = bvRepository.findAll();
+        for(BrowserVisits br : allvisits){
+            if(br.getBrowser().equals("opera")){
+                model.addAttribute("opera",br.getVisits());
+            }
+            if(br.getBrowser().equals("chrome")){
+                model.addAttribute("chrome",br.getVisits());
+            }
+            if(br.getBrowser().equals("firefox")){
+                model.addAttribute("firefox",br.getVisits());
+            }
+        }
+    }
+
 
 
 }
+
+
+// opera   Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.113 Safari/537.36 OPR/68.0.3618.52
+// chrome   Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36
+// firefox   Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0

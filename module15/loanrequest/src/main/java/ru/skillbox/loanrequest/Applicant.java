@@ -1,7 +1,10 @@
 package ru.skillbox.loanrequest;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -13,6 +16,9 @@ import java.time.Period;
 @Data
 @Entity
 @JsonAutoDetect
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Applicant {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -49,7 +55,6 @@ public class Applicant {
     @NotNull
     @Size(min=7, max=7 )
     private String pasKod;
-
 
     public String trullyGetCheck (){
         if (attPony.equals("Не очень")){

@@ -6,10 +6,12 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -75,14 +77,21 @@ public class FileSystemStorageService implements StorageService {
 
     @Override
     public void deleteAll() {
-        for (File myFile : new File(rootLocation.toString()).listFiles())
+        if(new File(rootLocation.toString()).listFiles()==null){
+            return;
+        }
+        for (File myFile : new File(rootLocation.toString()).listFiles()){
             if (myFile.isFile()) myFile.delete();
+        }
     }
 
     @Override
+    @PostConstruct
     public void init() {
         try {
             Files.createDirectory(rootLocation);
+        } catch (FileAlreadyExistsException e){
+            System.out.println("FileAlreadyExists, nothing special");
         } catch (IOException e) {
             throw new StorageException("Could not initialize storage", e);
         }
